@@ -33,6 +33,6 @@ for g, ndf in df.groupby("Monat"):
     grouped_df = ndf.groupby("Projekt")["Stunden"].sum().reset_index()
     # Convert the result to a list of lists
     result = grouped_df.values.tolist()
-    result_sorted = sorted(result, key=lambda x: x[1])
+    result_sorted = sorted(result, key=lambda x: x[1], reverse=True)
     new_df = pd.DataFrame(result_sorted, columns=["project", "hours"])
     new_df.to_csv(f_name, index=False)
